@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5cdff01e8984569b739d9d5e606cd22" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="Context.Categories" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Firms" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Log" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.ManagerRecovery" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.MessageFiles" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Messages" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Partners" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Settings" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.StorageDeliveryStatus" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.StorageDrivers" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.Users" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Context.PriceColumns" Width="1.5" PointX="0.027325144050328591" PointY="2.686518923699166" />
+        <EntityTypeShape EntityType="Context.Goods" Width="1.5" PointX="4.875" PointY="3.875" />
+        <EntityTypeShape EntityType="Context.Deliveries" Width="1.5" PointX="7.875" PointY="13.125" />
+        <EntityTypeShape EntityType="Context.Suppliers" Width="1.5" PointX="2.3061418320546587" PointY="28.084071321452068" />
+        <EntityTypeShape EntityType="Context.Orders" Width="1.5" PointX="4.1903884747020843" PointY="10.682879542318583" />
+        <EntityTypeShape EntityType="Context.Exchange1C" Width="1.5" PointX="11.357921629845128" PointY="8.65157545015755" />
+        <EntityTypeShape EntityType="Context.Exchange1CBroken" Width="1.5" PointX="7.2363227527757745" PointY="9.5615550920188213" />
+        <EntityTypeShape EntityType="Context.OrderItems" Width="1.5" PointX="9.4320139947496422" PointY="7.2865588102892778" />
+        <EntityTypeShape EntityType="Context.PricesPersonal" Width="1.5" PointX="8.52747692378586" PointY="30.275613873394025" />
+        <EntityTypeShape EntityType="Context.PartnerRests" Width="1.5" PointX="0.5210835246933081" PointY="15.28647718545351" />
+        <EntityTypeShape EntityType="Context.PriceColumnItem" Width="1.5" PointX="0.72697135281142367" PointY="30.645923315848187" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

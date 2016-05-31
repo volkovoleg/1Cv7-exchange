@@ -1,0 +1,866 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Context.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ContextStoreContainer">
+          <EntitySet Name="Categories" EntityType="Context.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Deliveries" EntityType="Context.Store.Deliveries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Exchange1C" EntityType="Context.Store.Exchange1C" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Exchange1CBroken" EntityType="Context.Store.Exchange1CBroken" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Firms" EntityType="Context.Store.Firms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Goods" EntityType="Context.Store.Goods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log" EntityType="Context.Store.Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ManagerRecovery" EntityType="Context.Store.ManagerRecovery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageFiles" EntityType="Context.Store.MessageFiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Messages" EntityType="Context.Store.Messages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItems" EntityType="Context.Store.OrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="Context.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PartnerRests" EntityType="Context.Store.PartnerRests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Partners" EntityType="Context.Store.Partners" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriceColumnItem" EntityType="Context.Store.PriceColumnItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriceColumns" EntityType="Context.Store.PriceColumns" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PricesPersonal" EntityType="Context.Store.PricesPersonal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Settings" EntityType="Context.Store.Settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StorageDeliveryStatus" EntityType="Context.Store.StorageDeliveryStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StorageDrivers" EntityType="Context.Store.StorageDrivers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Suppliers" EntityType="Context.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="Context.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ParentCategoryId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Deliveries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="RestDispatch" Type="int" Nullable="false" />
+          <Property Name="TransCompany" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TransContactName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TransAdress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TransPhone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReciverAdress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReciverContactName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReciverPhone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Exchange1C">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="int" Nullable="false" />
+          <Property Name="ExchangeState" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exchange1CBroken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+          <Property Name="Error" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TItle" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IdOneC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Code1C" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="PR" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="GroupCount" Type="smallint" Nullable="false" />
+          <Property Name="Weight" Type="real" Nullable="false" />
+          <Property Name="Volume" Type="real" Nullable="false" />
+          <Property Name="Barcode" Type="int" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateAndTime" Type="datetime2" Nullable="false" />
+          <Property Name="LogMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LogTitle" Type="nchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ManagerRecovery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="ManagerAssistentId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="MessageFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MessageId" Type="int" Nullable="false" />
+          <Property Name="FileUrl" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateAndTime" Type="datetime2" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="UserSenderId" Type="int" />
+          <Property Name="UserReciverId" Type="int" Nullable="false" />
+          <Property Name="Head" Type="nvarchar" MaxLength="10" />
+          <Property Name="Body" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="GoodId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code1C" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="SuppliersId" Type="int" Nullable="false" />
+          <Property Name="DeliveryId" Type="int" />
+          <Property Name="CreationDate" Type="datetime2" Nullable="false" />
+          <Property Name="ShipmentDate" Type="datetime2" Nullable="false" />
+          <Property Name="ReservDate" Type="datetime2" Nullable="false" />
+          <Property Name="PayType" Type="int" Nullable="false" />
+          <Property Name="FirmId" Type="int" Nullable="false" />
+          <Property Name="CommentForStorage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PartnerRests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="PartnerGoodName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="GoodId" Type="int" />
+        </EntityType>
+        <EntityType Name="Partners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Rang" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AdressMap" Type="nvarchar" MaxLength="120" />
+          <Property Name="AdressLatitude" Type="float" />
+          <Property Name="AdressLongitude" Type="float" />
+          <Property Name="Num1C" Type="nvarchar" MaxLength="10" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="DebtBank" Type="float" Nullable="false" />
+          <Property Name="DebtCash" Type="float" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPhoneMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPhoneJob" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceColumnId" Type="int" Nullable="false" />
+          <Property Name="DeclaredPriceColumnId" Type="int" Nullable="false" />
+          <Property Name="Trial" Type="datetime2" />
+          <Property Name="OnSite" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceColumnItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PriceColumnId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="GoodId" Type="int" />
+        </EntityType>
+        <EntityType Name="PriceColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OnSite" Type="bit" Nullable="false" />
+          <Property Name="FurstRange" Type="money" Nullable="false" />
+          <Property Name="LustRange" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PricesPersonal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="GoodId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="StartDate" Type="datetime2" Nullable="false" />
+          <Property Name="EndDate" Type="datetime2" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SettingKey" Type="nvarchar" Nullable="false" MaxLength="70" />
+          <Property Name="SettingValue" Type="nvarchar" Nullable="false" MaxLength="70" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StorageDeliveryStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+          <Property Name="IsDelivery" Type="bit" Nullable="false" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StorageDrivers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Fio" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientUserId" Type="int" Nullable="false" />
+          <Property Name="SupplierUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="HashPass" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime2" Nullable="false" />
+          <Property Name="Fio" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Context" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="developer_database" p1:LazyLoadingEnabled="false">
+          <EntitySet Name="Categories" EntityType="Context.Categories" />
+          <EntitySet Name="Firms" EntityType="Context.Firms" />
+          <EntitySet Name="Log" EntityType="Context.Log" />
+          <EntitySet Name="ManagerRecovery" EntityType="Context.ManagerRecovery" />
+          <EntitySet Name="MessageFiles" EntityType="Context.MessageFiles" />
+          <EntitySet Name="Messages" EntityType="Context.Messages" />
+          <EntitySet Name="Partners" EntityType="Context.Partners" />
+          <EntitySet Name="Settings" EntityType="Context.Settings" />
+          <EntitySet Name="StorageDeliveryStatus" EntityType="Context.StorageDeliveryStatus" />
+          <EntitySet Name="StorageDrivers" EntityType="Context.StorageDrivers" />
+          <EntitySet Name="Users" EntityType="Context.Users" />
+          <EntitySet Name="PriceColumns" EntityType="Context.PriceColumns" />
+          <EntitySet Name="Goods" EntityType="Context.Goods" />
+          <EntitySet Name="Deliveries" EntityType="Context.Deliveries" />
+          <EntitySet Name="Suppliers" EntityType="Context.Suppliers" />
+          <EntitySet Name="Orders" EntityType="Context.Orders" />
+          <EntitySet Name="Exchange1C" EntityType="Context.Exchange1C" />
+          <EntitySet Name="Exchange1CBroken" EntityType="Context.Exchange1CBroken" />
+          <EntitySet Name="OrderItems" EntityType="Context.OrderItems" />
+          <EntitySet Name="PricesPersonal" EntityType="Context.PricesPersonal" />
+          <EntitySet Name="PartnerRests" EntityType="Context.PartnerRests" />
+          <EntitySet Name="PriceColumnItem" EntityType="Context.PriceColumnItem" />
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ParentCategoryId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TItle" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IdOneC" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LogMessage" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="LogTitle" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ManagerRecovery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="ManagerAssistentId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="MessageFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageId" Type="Int32" Nullable="false" />
+          <Property Name="FileUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="UserSenderId" Type="Int32" />
+          <Property Name="UserReciverId" Type="Int32" Nullable="false" />
+          <Property Name="Head" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Partners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Rang" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AdressMap" Type="String" MaxLength="120" Unicode="true" FixedLength="false" />
+          <Property Name="AdressLatitude" Type="Double" />
+          <Property Name="AdressLongitude" Type="Double" />
+          <Property Name="Num1C" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="DebtBank" Type="Double" Nullable="false" />
+          <Property Name="DebtCash" Type="Double" />
+          <Property Name="ContactName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ContactPhoneMobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ContactPhoneJob" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PriceColumnId" Type="Int32" Nullable="false" />
+          <Property Name="DeclaredPriceColumnId" Type="Int32" Nullable="false" />
+          <Property Name="Trial" Type="DateTime" Precision="7" />
+          <Property Name="OnSite" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SettingKey" Type="String" Nullable="false" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="StorageDeliveryStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDelivery" Type="Boolean" Nullable="false" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="StorageDrivers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Fio" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="HashPass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fio" Type="String" MaxLength="50" Unicode="true" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartnerId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="OnSite" Nullable="false" />
+          <Property Type="Decimal" Name="FurstRange" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="LustRange" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code1C" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="PR" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="Int16" Name="GroupCount" Nullable="false" />
+          <Property Type="Single" Name="Weight" Nullable="false" />
+          <Property Type="Single" Name="Volume" Nullable="false" />
+          <Property Type="Int32" Name="Barcode" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deliveries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="RestDispatch" Nullable="false" />
+          <Property Type="String" Name="TransCompany" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TransContactName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TransAdress" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TransPhone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReciverAdress" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReciverContactName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReciverPhone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClientUserId" Nullable="false" />
+          <Property Type="Int32" Name="SupplierUserId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code1C" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="SuppliersId" Nullable="false" />
+          <Property Type="Int32" Name="DeliveryId" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="ShipmentDate" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="ReservDate" Nullable="false" Precision="7" />
+          <Property Type="Int32" Name="PayType" Nullable="false" />
+          <Property Type="Int32" Name="FirmId" Nullable="false" />
+          <Property Type="String" Name="CommentForStorage" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Exchange1C">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Source" Nullable="false" />
+          <Property Type="Int32" Name="ExchangeState" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="7" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exchange1CBroken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Source" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="7" />
+          <Property Type="String" Name="Error" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Count" Nullable="false" />
+          <Property Type="Int32" Name="GoodId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PricesPersonal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartnerId" Nullable="false" />
+          <Property Type="Int32" Name="GoodId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="EndDate" Precision="7" />
+        </EntityType>
+        <EntityType Name="PartnerRests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartnerId" Nullable="false" />
+          <Property Type="String" Name="PartnerGoodName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Count" Nullable="false" />
+          <Property Type="Int32" Name="GoodId" />
+        </EntityType>
+        <EntityType Name="PriceColumnItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PriceColumnId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="GoodId" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContextStoreContainer" CdmEntityContainer="developer_database">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Context.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="Context.Firms">
+              <MappingFragment StoreEntitySet="Firms">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TItle" ColumnName="TItle" />
+                <ScalarProperty Name="IdOneC" ColumnName="IdOneC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="Context.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="LogTitle" ColumnName="LogTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="LogMessage" ColumnName="LogMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagerRecovery">
+            <EntityTypeMapping TypeName="Context.ManagerRecovery">
+              <MappingFragment StoreEntitySet="ManagerRecovery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="ManagerAssistentId" ColumnName="ManagerAssistentId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageFiles">
+            <EntityTypeMapping TypeName="Context.MessageFiles">
+              <MappingFragment StoreEntitySet="MessageFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="Context.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserSenderId" ColumnName="UserSenderId" />
+                <ScalarProperty Name="UserReciverId" ColumnName="UserReciverId" />
+                <ScalarProperty Name="Head" ColumnName="Head" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="Context.Partners">
+              <MappingFragment StoreEntitySet="Partners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Rang" ColumnName="Rang" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="AdressMap" ColumnName="AdressMap" />
+                <ScalarProperty Name="AdressLatitude" ColumnName="AdressLatitude" />
+                <ScalarProperty Name="AdressLongitude" ColumnName="AdressLongitude" />
+                <ScalarProperty Name="Num1C" ColumnName="Num1C" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DebtBank" ColumnName="DebtBank" />
+                <ScalarProperty Name="DebtCash" ColumnName="DebtCash" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhoneMobile" ColumnName="ContactPhoneMobile" />
+                <ScalarProperty Name="ContactPhoneJob" ColumnName="ContactPhoneJob" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PriceColumnId" ColumnName="PriceColumnId" />
+                <ScalarProperty Name="DeclaredPriceColumnId" ColumnName="DeclaredPriceColumnId" />
+                <ScalarProperty Name="Trial" ColumnName="Trial" />
+                <ScalarProperty Name="OnSite" ColumnName="OnSite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="Context.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StorageDeliveryStatus">
+            <EntityTypeMapping TypeName="Context.StorageDeliveryStatus">
+              <MappingFragment StoreEntitySet="StorageDeliveryStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsDelivery" ColumnName="IsDelivery" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StorageDrivers">
+            <EntityTypeMapping TypeName="Context.StorageDrivers">
+              <MappingFragment StoreEntitySet="StorageDrivers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fio" ColumnName="Fio" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Context.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="HashPass" ColumnName="HashPass" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Fio" ColumnName="Fio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceColumns">
+            <EntityTypeMapping TypeName="Context.PriceColumns">
+              <MappingFragment StoreEntitySet="PriceColumns">
+                <ScalarProperty Name="LustRange" ColumnName="LustRange" />
+                <ScalarProperty Name="FurstRange" ColumnName="FurstRange" />
+                <ScalarProperty Name="OnSite" ColumnName="OnSite" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="Context.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GroupCount" ColumnName="GroupCount" />
+                <ScalarProperty Name="PR" ColumnName="PR" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Code1C" ColumnName="Code1C" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="Context.Deliveries">
+              <MappingFragment StoreEntitySet="Deliveries">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ReciverPhone" ColumnName="ReciverPhone" />
+                <ScalarProperty Name="ReciverContactName" ColumnName="ReciverContactName" />
+                <ScalarProperty Name="ReciverAdress" ColumnName="ReciverAdress" />
+                <ScalarProperty Name="TransPhone" ColumnName="TransPhone" />
+                <ScalarProperty Name="TransAdress" ColumnName="TransAdress" />
+                <ScalarProperty Name="TransContactName" ColumnName="TransContactName" />
+                <ScalarProperty Name="TransCompany" ColumnName="TransCompany" />
+                <ScalarProperty Name="RestDispatch" ColumnName="RestDispatch" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="Context.Suppliers">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="SupplierUserId" ColumnName="SupplierUserId" />
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Context.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="CommentForStorage" ColumnName="CommentForStorage" />
+                <ScalarProperty Name="FirmId" ColumnName="FirmId" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+                <ScalarProperty Name="ReservDate" ColumnName="ReservDate" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="SuppliersId" ColumnName="SuppliersId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Code1C" ColumnName="Code1C" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exchange1C">
+            <EntityTypeMapping TypeName="Context.Exchange1C">
+              <MappingFragment StoreEntitySet="Exchange1C">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ExchangeState" ColumnName="ExchangeState" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exchange1CBroken">
+            <EntityTypeMapping TypeName="Context.Exchange1CBroken">
+              <MappingFragment StoreEntitySet="Exchange1CBroken">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="Context.OrderItems">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PricesPersonal">
+            <EntityTypeMapping TypeName="Context.PricesPersonal">
+              <MappingFragment StoreEntitySet="PricesPersonal">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerRests">
+            <EntityTypeMapping TypeName="Context.PartnerRests">
+              <MappingFragment StoreEntitySet="PartnerRests">
+                <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="PartnerGoodName" ColumnName="PartnerGoodName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceColumnItem">
+            <EntityTypeMapping TypeName="Context.PriceColumnItem">
+              <MappingFragment StoreEntitySet="PriceColumnItem">
+                <ScalarProperty Name="GoodId" ColumnName="GoodId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceColumnId" ColumnName="PriceColumnId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
